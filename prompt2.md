@@ -1,4 +1,4 @@
-# "Desglosa la estructura de las tablas/documentos de forma que se puedan visualizar las entidades junto con tipos de datos y atributos"
+## "Desglosa la estructura de las tablas/documentos de forma que se puedan visualizar las entidades junto con tipos de datos y atributos"
 ---
 
 <img width="1134" height="6510" alt="image" src="https://github.com/user-attachments/assets/15cd8277-ef30-4416-9840-035cee8a974d" />
