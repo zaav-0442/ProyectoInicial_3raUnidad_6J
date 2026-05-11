@@ -1,4 +1,4 @@
-# "Actúa como un administrador de bases de datos en el proyecto "MegaPizzaplex", que es una aplicación para ordenar comida a domicilio. Muestra la estructura que sería recomendable seguir para simular todo el proceso que se lleva a cabo al utilizar la aplicación"
+## "Actúa como un administrador de bases de datos en el proyecto "MegaPizzaplex", que es una aplicación para ordenar comida a domicilio. Muestra la estructura que sería recomendable seguir para simular todo el proceso que se lleva a cabo al utilizar la aplicación"
 
 ---
 
