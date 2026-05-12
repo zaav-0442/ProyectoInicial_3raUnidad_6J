@@ -596,11 +596,8 @@ CREATE TYPE tipo_notificacion AS ENUM (
     'email'
 );
 
--- -------------------------------------------------------------
--- GRUPO: USUARIOS
--- -------------------------------------------------------------
-
-CREATE TABLE usuario (
+GRUPO: USUARIOS
+CREATE TABLE usuario ( ```
     id                UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre            VARCHAR(120)    NOT NULL,
     email             VARCHAR(255)    NOT NULL,
@@ -612,10 +609,9 @@ CREATE TABLE usuario (
 );
 
 CREATE UNIQUE INDEX idx_usuario_email ON usuario (email);
+```
 
--- -------------------------------------------------------------
-
-CREATE TABLE direccion (
+CREATE TABLE direccion ( ```
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     usuario_id      UUID            NOT NULL REFERENCES usuario (id) ON DELETE CASCADE,
     alias           VARCHAR(60),
@@ -629,7 +625,7 @@ CREATE TABLE direccion (
 );
 
 CREATE INDEX idx_direccion_usuario ON direccion (usuario_id);
-
+```
 -- -------------------------------------------------------------
 -- GRUPO: CATÁLOGO
 -- -------------------------------------------------------------
