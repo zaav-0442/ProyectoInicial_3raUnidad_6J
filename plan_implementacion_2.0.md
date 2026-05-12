@@ -534,8 +534,7 @@ Una vez que se haya completado este primer paso, dependiendo de la ruta que se t
 
 ESTRUCTURA RECOMENDADA PARA LA BASE DE DATOS:
 
-
-
+<img width="1440" height="1626" alt="image" src="https://github.com/user-attachments/assets/bb329415-1cb6-4ada-a5b2-3ed09dd3f4bb" />
 
 El esquema cubre 11 tablas que simulan el ciclo completo. Aquí un resumen de los grupos lógicos:
 Gestión de usuarios y direcciones — USUARIO y DIRECCION permiten que un cliente tenga múltiples domicilios guardados, con coordenadas para el cálculo de rutas y costos de envío.
@@ -545,10 +544,7 @@ Pagos — PAGO tiene relación uno a uno con PEDIDO. El campo referencia_externa
 Repartidor — REPARTIDOR guarda su ubicación en tiempo real (latitud_actual, longitud_actual) para el tracking del pedido.
 Post-entrega — RESENA separa la calificación de la comida y la de la entrega, lo cual permite retroalimentación diferenciada para el restaurante y el repartidor. NOTIFICACION permite registrar todos los eventos enviados al usuario (push, SMS, email) para auditoría y reenvío.
 
-
-
-
-
+<img width="1440" height="3966" alt="image" src="https://github.com/user-attachments/assets/7c6b031c-23b7-41cc-9ad5-cce307a7f2b9" />
 
 SCRIPT SQL:
 
