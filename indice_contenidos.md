@@ -1,5 +1,5 @@
 # 1. Objetivo
-<img width="2752" height="1536" alt="image" src="https://github.com/user-attachments/assets/ca27d09d-eba3-4800-8605-d0b6b6f7686a" />
+<img width="1024" height="571" alt="image" src="https://github.com/user-attachments/assets/a0d549f5-f5e1-48d7-accc-131eb6dffe44" />
 
 #2. Marco Teórico
 <img width="1678" height="937" alt="image" src="https://github.com/user-attachments/assets/f151cfee-c5b2-42ff-802e-1b25b3403084" />
