@@ -600,8 +600,9 @@ CREATE TYPE tipo_notificacion AS ENUM (
     'email'
 );
 ```
-
-GRUPO: USUARIOS
+-- -------------------------------------------------------------
+-- GRUPO: USUARIOS
+-- -------------------------------------------------------------
 ```
 CREATE TABLE usuario ( ```
     id                UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -635,7 +636,7 @@ CREATE INDEX idx_direccion_usuario ON direccion (usuario_id);
 -- -------------------------------------------------------------
 -- GRUPO: CATÁLOGO
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE restaurante (
     id                  UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre              VARCHAR(150)    NOT NULL,
@@ -651,9 +652,8 @@ CREATE TABLE restaurante (
     tiempo_entrega_min  SMALLINT        NOT NULL DEFAULT 30,
     radio_entrega_km    DECIMAL(5, 2)   NOT NULL DEFAULT 5.00
 );
-
--- -------------------------------------------------------------
-
+```
+```
 CREATE TABLE categoria_menu (
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     restaurante_id  UUID            NOT NULL REFERENCES restaurante (id) ON DELETE CASCADE,
@@ -663,11 +663,11 @@ CREATE TABLE categoria_menu (
     orden           SMALLINT        NOT NULL DEFAULT 0,
     activa          BOOLEAN         NOT NULL DEFAULT TRUE
 );
-
+```
 CREATE INDEX idx_categoria_restaurante ON categoria_menu (restaurante_id);
 
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE producto (
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     categoria_id    UUID            NOT NULL REFERENCES categoria_menu (id) ON DELETE CASCADE,
@@ -680,13 +680,13 @@ CREATE TABLE producto (
     tiempo_prep_min SMALLINT,
     es_vegano       BOOLEAN         NOT NULL DEFAULT FALSE
 );
-
+```
 CREATE INDEX idx_producto_categoria ON producto (categoria_id);
 
 -- -------------------------------------------------------------
 -- GRUPO: OPERACIÓN
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE repartidor (
     id                      UUID                PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre                  VARCHAR(120)        NOT NULL,
@@ -697,11 +697,11 @@ CREATE TABLE repartidor (
     ubicacion_actualizada   TIMESTAMPTZ,
     calificacion_promedio   DECIMAL(3, 2)       CHECK (calificacion_promedio BETWEEN 0 AND 5)
 );
-
+```
 -- -------------------------------------------------------------
 -- GRUPO: PEDIDOS
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE pedido (
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     usuario_id      UUID            NOT NULL REFERENCES usuario (id),
@@ -717,14 +717,14 @@ CREATE TABLE pedido (
     creado_en       TIMESTAMPTZ     NOT NULL DEFAULT NOW(),
     entregado_en    TIMESTAMPTZ
 );
-
+```
 CREATE INDEX idx_pedido_usuario    ON pedido (usuario_id);
 CREATE INDEX idx_pedido_restaurante ON pedido (restaurante_id);
 CREATE INDEX idx_pedido_estado     ON pedido (estado);
 CREATE INDEX idx_pedido_creado     ON pedido (creado_en DESC);
 
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE item_pedido (
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     pedido_id       UUID            NOT NULL REFERENCES pedido (id) ON DELETE CASCADE,
@@ -735,11 +735,11 @@ CREATE TABLE item_pedido (
     subtotal        DECIMAL(10, 2)  NOT NULL CHECK (subtotal >= 0),
     notas           TEXT
 );
-
+```
 CREATE INDEX idx_item_pedido ON item_pedido (pedido_id);
 
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE pago (
     id                  UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     pedido_id           UUID            NOT NULL UNIQUE REFERENCES pedido (id) ON DELETE CASCADE,
@@ -750,11 +750,11 @@ CREATE TABLE pago (
     referencia_externa  VARCHAR(200),
     procesado_en        TIMESTAMPTZ
 );
-
+```
 CREATE INDEX idx_pago_pedido ON pago (pedido_id);
 
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE resena (
     id              UUID        PRIMARY KEY DEFAULT gen_random_uuid(),
     pedido_id       UUID        NOT NULL UNIQUE REFERENCES pedido (id) ON DELETE CASCADE,
@@ -764,11 +764,11 @@ CREATE TABLE resena (
     comentario      TEXT,
     creado_en       TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
-
+```
 CREATE INDEX idx_resena_pedido ON resena (pedido_id);
 
 -- -------------------------------------------------------------
-
+```
 CREATE TABLE notificacion (
     id          UUID                    PRIMARY KEY DEFAULT gen_random_uuid(),
     usuario_id  UUID                    NOT NULL REFERENCES usuario (id) ON DELETE CASCADE,
@@ -779,7 +779,7 @@ CREATE TABLE notificacion (
     leida       BOOLEAN                 NOT NULL DEFAULT FALSE,
     enviada_en  TIMESTAMPTZ             NOT NULL DEFAULT NOW()
 );
-
+```
 CREATE INDEX idx_notificacion_usuario ON notificacion (usuario_id);
 CREATE INDEX idx_notificacion_enviada ON notificacion (enviada_en DESC);
 
