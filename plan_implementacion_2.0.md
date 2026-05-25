@@ -560,7 +560,7 @@ CREATE EXTENSION IF NOT EXISTS "pgcrypto";
 -- -------------------------------------------------------------
 -- TIPOS ENUM
 -- -------------------------------------------------------------
-
+```
 CREATE TYPE estado_pedido AS ENUM (
     'pendiente',
     'confirmado',
@@ -569,34 +569,40 @@ CREATE TYPE estado_pedido AS ENUM (
     'entregado',
     'cancelado'
 );
-
+```
+```
 CREATE TYPE estado_pago AS ENUM (
     'pendiente',
     'aprobado',
     'rechazado',
     'reembolsado'
 );
-
+```
+```
 CREATE TYPE metodo_pago AS ENUM (
     'tarjeta',
     'efectivo',
     'transferencia',
     'wallet'
 );
-
+```
+```
 CREATE TYPE estado_repartidor AS ENUM (
     'disponible',
     'en_entrega',
     'inactivo'
 );
-
+```
+```
 CREATE TYPE tipo_notificacion AS ENUM (
     'push',
     'sms',
     'email'
 );
+```
 
 GRUPO: USUARIOS
+```
 CREATE TABLE usuario ( ```
     id                UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre            VARCHAR(120)    NOT NULL,
@@ -610,7 +616,7 @@ CREATE TABLE usuario ( ```
 
 CREATE UNIQUE INDEX idx_usuario_email ON usuario (email);
 ```
-
+```
 CREATE TABLE direccion ( ```
     id              UUID            PRIMARY KEY DEFAULT gen_random_uuid(),
     usuario_id      UUID            NOT NULL REFERENCES usuario (id) ON DELETE CASCADE,
@@ -623,9 +629,9 @@ CREATE TABLE direccion ( ```
     longitud        DECIMAL(9, 6)   NOT NULL,
     es_principal    BOOLEAN         NOT NULL DEFAULT FALSE
 );
-
-CREATE INDEX idx_direccion_usuario ON direccion (usuario_id);
 ```
+CREATE INDEX idx_direccion_usuario ON direccion (usuario_id);
+
 -- -------------------------------------------------------------
 -- GRUPO: CATÁLOGO
 -- -------------------------------------------------------------
